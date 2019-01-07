@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/sbissett/Scrape/issues"
   },
-  "homepage": "https://github.com/sbissett/Scrape#readme"
+  "homepage": "https://github.com/sbissett/Scrape#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "handlebars": "^4.0.12",
+    "mongoose": "^5.4.2",
+    "require": "^2.4.20"
+  }
 }
