@@ -2,11 +2,11 @@
 let axios = require('axios'); // HTTP Request
 let cheerio = require('cheerio'); // Web Scrapper
 let mongoose = require('mongoose'); // MongoDB ORM
-let db = require("../models"); // Require all models
+let db = require("../models"); // Require al.mlab.coml models
 
 /////////////////////////////////////////////// /* Mongoose Configuration */ ////////////////////////////////////////////////////////
 mongoose.Promise = Promise; // Set mongoose to leverage Built in JavaScript ES6 Promises
-mongoose.connect("mongodb://", { // Connect to the Mongo DB
+mongoose.connect("mongodb://heroku_need connection:8ab2abb3-8c46-41b2-b71d-bb61aa0bff5d", { // Connect to the Mongo DB
   useMongoClient: true
 });
 
