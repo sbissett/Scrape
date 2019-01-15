@@ -4,20 +4,22 @@ let cheerio = require('cheerio'); // Web Scrapper
 let mongoose = require('mongoose'); // MongoDB ORM
 let db = require("../models"); // Require al.mlab.coml models
 
-/////////////////////////////////////////////// /* Mongoose Configuration */ ////////////////////////////////////////////////////////
-mongoose.Promise = Promise; // Set mongoose to leverage Built in JavaScript ES6 Promises
-mongoose.connect("mongodb://heroku_need connection:8ab2abb3-8c46-41b2-b71d-bb61aa0bff5d", { // Connect to the Mongo DB
-  useMongoClient: true
-});
+////////////////i/////////////////////////////// /* Mongoose Configuration */ ////////////////////////////////////////////////////////
+//mongoose.Promise = Promise; // Set mongoose to leverage Built in JavaScript ES6 Promises
+
+
+//mongoose.connect("mongodb://heroku_need connection:8ab2abb3-8c46-41b2-b71d-bb61aa0bff5d", { // Connect to the Mongo DB
+//  useMongoClient: true
+//});
 
 // mongodb://heroku_need to include heroku link above after the forward slakses
 
-let mongooseConnection = mongoose.connection;
+//let mongooseConnection = mongoose.connection;
 
-mongooseConnection.on('error', console.error.bind(console, 'connection error:'));
-mongooseConnection.once('open', function() {
-  console.log(`Sucessfully Connected to Mongo DB !`); // If Connection is successful, Console.log(Message)
-});
+//mongooseConnection.on('error', console.error.bind(console, 'connection error:'));
+//mongooseConnection.once('open', function() {
+//  console.log(`Sucessfully Connected to Mongo DB !`); // If Connection is successful, Console.log(Message)
+//});
 
 /////////////////////////////////////////////// /* Exports */ ////////////////////////////////////////////////////////
 module.exports = (app) => { // Export Module Containing Routes. Called from Server.js
@@ -82,20 +84,23 @@ module.exports = (app) => { // Export Module Containing Routes. Called from Serv
     // console.log("add path hit");
 
     let articleObject = req.body;
-
-    db.Articles. // Save the Article to the Database
+      console.log("checking")
+    db.Articles. 
+    // Save the Article to the Database
     findOne({url: articleObject.url}). // Look for an Existing Article with the Same URL
     then(function(response) {
-
+      console.log("success")
       if (response === null) { // Only Create Article if it has not been Created
-        db.Articles.create(articleObject).then((response) => console.log(" ")).catch(err => res.json(err));
+        db.Articles.create(articleObject).then((response) => console.log(response)).catch(err => res.json(err));
       } // End if
 
       // If we were able to successfully  save an Article, send a message to the client
       res.send("Article Saved");
     }).catch(function(err) {
       // If an error occurred, send it to the client
+      console.log(err);
       res.json(err);
+
     });
 
   }); // End Post Route

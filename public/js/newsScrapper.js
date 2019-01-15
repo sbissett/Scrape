@@ -1,6 +1,7 @@
 $(document).ready(function() {
     /////////////////////////////////////////////// /* Initialize Modals */ ////////////////////////////////////////////////////////
-    $('#saveModal').modal(); // Articles Saved Modal
+    $('#saveModal').modal(); 
+    console.log("running") // Articles Saved Modal
     $('#modalMessage').modal(); // Message Modal
     $('#articleModal').modal(); // Notes Modal
   

@@ -5,10 +5,22 @@ let exphbs = require('express-handlebars'); // Templating Engine
 // let logger = require("morgan"); // Logger
 var db = require("./models"); // Require all models
 // let cheerio = require('cheerio'; // Web Scrapper
-// let mongoose = require('mongoose'; // MongoDB ORM
+let mongoose = require('mongoose'); // MongoDB ORM
 // let db from "./models"; // Require all models
-
+//mongoose.connect("mongodb://localhost/scraper",  );
 /////////////////////////////////////////////// /* Set Up Variables*/ //////////////////////////////////////////////////////////
+
+var databaseURi = 'mongodb://localhost/scraper';
+if (process.env.MONGODB_URI) {
+
+    mongoose.connect(process.env.MONGODB_URI);
+
+} else {
+
+    mongoose.connect(databaseURI, { useNewUrlParser: true }); 
+}
+
+//var db = mongoose.connection;
 
 let PORT = process.env.PORT || 8080; // Set Default Port for Express and Heroku
 let app = express(); // Initialize Express
